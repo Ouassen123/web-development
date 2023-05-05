@@ -1,0 +1,34 @@
+<script>
+    function rechercher(){
+    let name=document.getElementById('name').value;
+
+    window.location.href = `/location-voitures/search/${encodeURIComponent(name)}`;
+
+    }
+
+</script>
+<nav>
+  <div class="logo">
+     <a href="/location-voitures">Marrakech Location</a>
+  </div>
+  <div class="menu">
+    <ul>
+
+      <li>     <a  href="/location-voitures/reserver">NOS VÉHICULE</a></li>
+      <li>  <a  href="/location-voitures/contact">CONTACT</a></li>
+
+{% if request.session.client_id %}
+      <li>   <a  href="/location-voitures/profil">Profil</a></li>
+   <li>   <a  href="/location-voitures/deconnexion">DECONNEXION</a></li>
+{% else %}
+   <li>   <a  href="/location-voitures/authentification-client">CONNEXION</a></li>
+{% endif %}
+    </ul>
+  </div>
+  <div class="search">
+    <input type="text" id="name" placeholder="Rechercher...">
+    <button type="submit" onclick="rechercher()">OK</button>
+
+  </div>
+
+</nav>
